@@ -1,16 +1,93 @@
 html{
-  box-sizing: border-box; /* https://css-tricks.com/box-sizing/ */
-  background:#eee;
-  background: url("../img/flagF4D.png") center no-repeat;
+  box-sizing: border-box; 
+  background-color: black; 
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+main {
+    font-family: 'Helvetica', 'serif'; 
+}
+
 body{
-  max-width: 30em;
+  max-width: 50em;
   margin: 1em auto;
   padding: 1em;
-  background: #fff;
+  background: lightgray;
   border-radius: 1em;
   box-shadow: 0.5em 0.5em 0.5em rgba(68,68,68,0.6);
+}
+
+main article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+main article div {
+    border: none;
+    border-radius: 1em;
+    width: 10em;
+    height: 10em;
+    margin: 1em;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 2em;
+    font-weight: 800;
+    padding: 0.5em 0;
+}
+
+/*Poging op buttons te maken van de checkboxes vandaar dat sommige dingen in comments staan*/
+label {
+    font-family: "Helvetica", "sans-serif";
+    font-size: 1.2em;
+    text-transform: lowercase;
+    font-weight: 500;
+    background-color: antiquewhite;
+    padding: 0.5em 1em;
+    margin-right: 1em;
+    border-radius: 0.5em;
+    /*
+    margin-right:1.5em;
+    margin-left: -1.5em;
+*/
+}
+
+/*voor iedere hover moet eigenlijk de button de kleur krijgen van de afbeelding kleur*/
+label:hover {
+    background-color: grey;
+    color: white;
+    font-weight: 700;
+}
+
+/*
+poging tot buttons van de checkboxes maken
+.checkbox input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    z-index: 100;
+}
+*/
+
+/*stylen van de divs uiteindelijk moeten dit afbeeldingen worden*/
+.imgblauw {
+    background-color: lightskyblue;
+    display: none;
+}
+
+.imgrood {
+    background-color: lightsalmon;
+    display: none;
+}
+
+.imggeel {
+    background-color: lightyellow;
+    display: none;
 }
