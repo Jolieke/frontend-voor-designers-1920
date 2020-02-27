@@ -30,7 +30,19 @@ Kies een van de Use Cases, schets eerst een ontwerp voor de interactie. Codeer i
 2. Koppel een [evenListener](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event) aan het element om een mouse-event te detecteren
 3. Gebruik het [Classlist object](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) om een css class aan een element toe te voegen of weg te halen.
 
+
+### Resources per use case
+- Dit is een goede resource om een microinteractie te maken met Javascript: [Hey designers, if you only know one thing about JavaScript, this is what I would recommend](https://css-tricks.com/video-screencasts/150-hey-designers-know-one-thing-javascript-recommend/)
+- Dit is een goede uitleg van [Drag & Drop](https://developer.mozilla.org/en-US/docs/Web/API/Document/drag_event). Handig voor Use case 3.
+- Met [QuerySelectAll ](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) kun je gebruiken om  meerdere elementen te selecteren. Handig voor de 4e use case.
+
+
+### Volgende stap
+
 Voor wat complexere micro-interacties waar verschillende states elkaar moeten opvolgen kun je aan het eind van een transition of animation weer iets laten gebeuren. Gebruik hiervoor in Javascript de:
+
+
+
 
 - eventlistener: [transitionend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/transitionend_event)
 - eventlistener: [animationend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/animationend_event)
