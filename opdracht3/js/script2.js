@@ -2,6 +2,45 @@
 /*eslint-env browser*/
 /*eslint 'no-console':0*/
 
+//Deze code heb ik wat aangepast van het origineel, zodat ik het beter begreep. Ik weet niet of dit juist is. Dit was de originele code wat alleen gaat om de aantal landen die geinfecteerd zijn: 
+
+//var data = null;
+//
+//var xhr = new XMLHttpRequest();
+//xhr.withCredentials = true;
+//
+//xhr.addEventListener("readystatechange", function () {
+//	if (this.readyState === this.DONE) {
+//		console.log(this.responseText);
+//	}
+//});
+//
+//xhr.open("GET", "https://coronavirus-monitor.p.rapidapi.com/coronavirus/affected.php");
+//xhr.setRequestHeader("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com");
+//xhr.setRequestHeader("x-rapidapi-key", "800cfaec57mshb3d2fa49ac20cf9p1f6b51jsn3fcd61f320c0");
+//
+//xhr.send(data);
+
+//Zo heb je de volgende code voor world cases en deaths etc, (zie hieronder). 
+//Zou ik deze data iedere keer op deze manier moeten inladen als ik verschillende soorten data vanuit de API wil gebruiken? 
+
+//var data = null;
+//
+//var xhr = new XMLHttpRequest();
+//xhr.withCredentials = true;
+//
+//xhr.addEventListener("readystatechange", function () {
+//	if (this.readyState === this.DONE) {
+//		console.log(this.responseText);
+//	}
+//});
+//
+//xhr.open("GET", "https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php");
+//xhr.setRequestHeader("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com");
+//xhr.setRequestHeader("x-rapidapi-key", "800cfaec57mshb3d2fa49ac20cf9p1f6b51jsn3fcd61f320c0");
+//
+//xhr.send(data);
+
 var data = null;
 
 // link naar het json file wat je wilt gebruiken
@@ -11,7 +50,7 @@ var requestURL = "https://coronavirus-monitor.p.rapidapi.com/coronavirus/affecte
 var request = new XMLHttpRequest();
 request.withCredentials = true;
 
-
+//Ik begrijp niet wat ze hier mee bedoelen.
 request.addEventListener("readystatechange", function () {
 	if (this.readyState === this.DONE) {
 		console.log(this.responseText);
@@ -26,12 +65,14 @@ request.setRequestHeader("x-rapidapi-key", "800cfaec57mshb3d2fa49ac20cf9p1f6b51j
 //verzoek verzenden
 request.send(data);
 
+//poging tot het ophalen van het land Nederland
 request.onload = function () {
     var allCountries = request.response;
     console.log(request.response);
     console.log(request.response[10].affected_countries);  
 }
 
+//aantekeningen van vorige opdracht hieronder: 
 /*//functie aanmaken voor het laden van het json bestand
 request.onload = function () {
     //var allMovies = request.response;
