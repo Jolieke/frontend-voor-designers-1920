@@ -2,23 +2,6 @@
 /*eslint-env browser*/
 /*eslint 'no-console':0*/
 
-//totaal aantal cases over de wereld
-var dataWorldStat = null;
-
-var requestWorldStat = new XMLHttpRequest();
-requestWorldStat.withCredentials = true;
-
-requestWorldStat.open("GET", "https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php");
-requestWorldStat.responseType = 'json';
-requestWorldStat.setRequestHeader("x-rapidapi-key", "800cfaec57mshb3d2fa49ac20cf9p1f6b51jsn3fcd61f320c0");
-
-//verzoek verzenden
-requestWorldStat.send(dataWorldStat);
-
-requestWorldStat.onload = function () {
-    console.log(requestWorldStat.response);
-};
-
 //totaal aantal cases per land
 var dataCountryStat = null;
 
@@ -36,28 +19,45 @@ requestCountryStat.onload = function () {
     console.log(requestCountryStat.response.countries_stat[10]);
 };
 
-var main = document.querySelector('section');
-var nederland = document.createElement('p');
-
-
-
 //
-//requestCountryStat.onload = function () {
-//    //hier kun je nu iets doen met de data
-//    setupdata(requestCountryStat.response);
+//var section = document.querySelector('section'); 
+//
+//var container = document.createElement('div');
+//section.appendChild(container);
+//
+//var death = document.createElement('article');
+//container.appendChild(death);
+//
+//var sick = document.createElement('article');
+//container.appendChild(sick);
+//
+//var recovered = document.createElement('article');
+//container.appendChild(recovered);
+//
+//var selectCountry = document.querySelector('.selectCountry');
+//var list = document.querySelector('.countryList');
+//var listItems = document.querySelectorAll('ul>li');
+//var showCountry = document.querySelector('.chosen');
+//
+//selectCountry.addEventListener('click', function () {
+//  // check if your drop down is already open
+//  if (list.style.display === 'block') {
+//    // if so it needs to be closed
+//    list.style.display = 'none';
+//  } else {
+//    // if not it needs to be open.
+//    list.style.display = 'block';
+//    allItemsGetClicked();
+//  }
+//}, true);
+//
+//function allItemsGetClicked() {
+//  listItems.forEach(function (element) {
+//    console.log(element);
+//    element.addEventListener('click', function (event) {
+//      console.log(event.target.innerHTML);
+//      showCountry.innerHTML = event.target.innerHTML;
+//    }, true)
+//  })
 //}
 //
-////in je html staat een section, daar ga je alle data koppelen
-//var main = document.querySelector("section");
-////maak een ul element aan om de landen uit de json in te zetten
-//var lijst = document.createElement("ul");
-//lijst.textContent = 'Kies Land: ';
-//
-//function setupdata(virusdata) {
-//    for (country of virusdata.countries_stat) {
-//        console.log("land: ", country);
-//        var li = document.createElement("li");
-//        li.textContent = country;
-//        lijst.appendChild(li);
-//    } 
-//    main.appendChild(lijst); }
