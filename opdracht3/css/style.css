@@ -1,27 +1,47 @@
-/* || general styles */
+/* ALGEMENE STYLING */
 
 html {
     font-family: 'helvetica neue', 'helvetica', 'arial', sans-serif;
+    width: 100%;
 }
 
 body {
-    width: 800px;
-    margin: 0 auto;
-    background-color: lightgoldenrodyellow;
-}
-
-h1,
-h2 {
-    font-family: 'Libre Barcode 128 Text', cursive;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #57c4ff;
 }
 
 /* HEADER STYLING */
 
-h1 {
-    font-size: 8em;
+header {
+    width: 100%;
+}
+
+header img {
+    width: 30%; 
+    display: block;
+    margin: 0 auto;
+}
+
+/* FORM STYLING */
+
+form {
     text-align: center;
-    text-decoration: underline;
-    color: red;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+h2 {
+    font-family: 'helvetica', cursive;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    color: black;
 }
 
 header p {
@@ -51,13 +71,14 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* DROPDOWN MENU STYLING */
+
 .names {
-  display: none;
+/*    display: none;*/
 }
 
 /* FOOTER STYLING */
 footer {
-    justify-content: center;
     text-align: center;
     background-color: lightcoral;
     font-weight: bold;

@@ -3,7 +3,7 @@
 /*eslint 'no-console':0*/
 
 //totaal aantal cases per land
-var dataCountryStat = null;
+var dataCountryStat = 0;
 
 var requestCountryStat = new XMLHttpRequest();
 requestCountryStat.withCredentials = true;
@@ -19,21 +19,38 @@ requestCountryStat.onload = function () {
     console.log(requestCountryStat.response.countries_stat[10]);
 };
 
-//
-//var section = document.querySelector('section'); 
-//
-//var container = document.createElement('div');
-//section.appendChild(container);
-//
-//var death = document.createElement('article');
-//container.appendChild(death);
-//
-//var sick = document.createElement('article');
-//container.appendChild(sick);
-//
-//var recovered = document.createElement('article');
-//container.appendChild(recovered);
-//
+var j;
+var countryList = document.querySelector('#countryList');
+var data = requestCountryStat.response.countries_stat;
+
+
+// het toevoegen van (country) options aan select in form
+requestCountryStat.onload = function () {
+    console.log(requestCountryStat.response);
+
+    for (j = 0; j < 213; j++) {
+        console.log('countries ', data[j]);
+        var option = document.createElement('option');
+        option.innerHTML = data[j].country_name;
+        countryList.append(option);
+    }
+};
+
+var selectCountry = document.querySelector('.selected');
+
+selectCountry.addEventListener('change', function (event) {
+    var result = document.querySelector('.result');
+    var deaths = document.createElement('p');
+    deaths.innerHTML = data[j].country_name.deaths;
+    result.textContent(deaths);
+}, true);
+
+//    
+//result.textContext = 'deaths' {data[j].country_name.deaths}});
+
+
+
+
 //var selectCountry = document.querySelector('.selectCountry');
 //var list = document.querySelector('.countryList');
 //var listItems = document.querySelectorAll('ul>li');
@@ -60,4 +77,3 @@ requestCountryStat.onload = function () {
 //    }, true)
 //  })
 //}
-//

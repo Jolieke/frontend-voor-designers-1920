@@ -13,32 +13,27 @@
 </head>
 
 <body>
+    <div class="loading"> </div>
 
     <header>
-     <nav>
-    <h1>Stay safe</h1>
-    <h2 class="selectCountry">Kies Land</h2>
-    <ul class="countryList">
-      <li>Naam 1</li>
-      <li>Naam 2</li>
-      <li>Naam 3</li>
-      <li>Naam 4</li>
-      <li>Naam 5</li>
-    </ul>
-  </nav>
+        <img src="img/potato.png" alt="stay at home">
     </header>
-   <main>
-    <p class="chosen"></p>
-  </main>
-      
-    <section>
-     
-        <!--      <id death> &#10014;</id>-->
-    </section>
+
+    <main>
+        <form>
+            <label for="countryList"> Kies een land:</label>
+            <select name="countries" size="1" id="countryList" class="selected">
+            </select>
+        </form>
+        
+        <section class="chosenCountry">
+            
+        </section>
+    </main>
+
     <footer>
         <p>&#169; Jolieke Timmermans | 500804107 | April 2020
-            <p>
-                Frontend for Designers | Koop Reynders </p>
+            <p>Frontend for Designers | Koop Reynders </p>
     </footer>
 
     <script src="js/script2.js" type="text/javascript"></script>
