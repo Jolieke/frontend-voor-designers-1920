@@ -21,13 +21,12 @@ requestCountryStat.onload = function () {
 
 var j;
 var countryList = document.querySelector('#countryList');
-var data = requestCountryStat.response.countries_stat;
-
 
 // het toevoegen van (country) options aan select in form
 requestCountryStat.onload = function () {
     console.log(requestCountryStat.response);
-
+    var data = requestCountryStat.response.countries_stat;
+    
     for (j = 0; j < 213; j++) {
         console.log('countries ', data[j]);
         var option = document.createElement('option');
@@ -35,15 +34,31 @@ requestCountryStat.onload = function () {
         countryList.append(option);
     }
 };
+//
+//var selectCountry = document.querySelector('.selected');
+//
+//var result = document.querySelector('.result');
+//
+//var deaths = document.createElement('p');
+//deaths.textContent = data[j].country_name.deaths;
+//
+//function showCountryResults () {
+//result.deaths;}
+//
+//selectCountry.addEventListener('change', function () {
+//showCountryResults(showCountryResults);
+//});
+//
 
-var selectCountry = document.querySelector('.selected');
 
-selectCountry.addEventListener('change', function (event) {
-    var result = document.querySelector('.result');
-    var deaths = document.createElement('p');
-    deaths.innerHTML = data[j].country_name.deaths;
-    result.textContent(deaths);
-}, true);
+//selectCountry.addEventListener('change', function (event) {
+//    var result = document.querySelector('.result');
+//    var deaths = document.createElement('p');
+//    deaths.innerHTML = data[j].country_name.deaths;
+//    result.textContent(deaths);
+//});
+
+
 
 //    
 //result.textContext = 'deaths' {data[j].country_name.deaths}});
