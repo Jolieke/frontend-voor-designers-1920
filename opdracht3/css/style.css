@@ -1,16 +1,26 @@
 /* ALGEMENE STYLING */
 
-html {
-    font-family: 'helvetica neue', 'helvetica', 'arial', sans-serif;
-    width: 100%;
-}
-
+html,
 body {
-    width: 100%;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    font-family: 'helvetica neue', 'helvetica', 'arial', sans-serif;
     background-color: #57c4ff;
 }
+
+#loader img {
+    position: fixed;
+    height: 100%;
+    width: 1300px;
+    z-index: 1;
+    overflow: visible;
+    background: no-repeat center center;
+    background-color: #fef7d7;
+}
+
 
 /* HEADER STYLING */
 
@@ -19,57 +29,134 @@ header {
 }
 
 header img {
-    width: 30%; 
+    width: 30%;
     display: block;
     margin: 0 auto;
+}
+
+main h1 {
+    width: 100%;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: orangered;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 15px 0;
+
 }
 
 /* FORM STYLING */
 
 form {
     text-align: center;
+    margin: 0% 25%;
+    padding: 2%;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+form:hover {
+    background-color: beige;
+    transform: scale(1.1);
+    transition-duration: 0.5;
+}
+
+form::after {
+    background-color: beige;
+    transform: scale(1.1);
 }
 
 select:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-h2 {
-    font-family: 'helvetica', cursive;
-}
-
-h1 {
-    font-size: 5rem;
-    text-align: center;
-    color: black;
-}
-
-header p {
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
+label {
+    font-family: 'adobe-handwriting-tiffany', 'sans-serif';
+    font-weight: 400;
+    font-size: 24px;
 }
 
 /* SECTION STYLING */
 
-section article {
-    width: 33%;
-    float: left;
+section {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-section p {
-    margin: 5px 0;
+div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
-section ul {
-    margin-top: 0;
+.death {
+    content: "\271D";
+    font-size: 100px;
+    color: orangered;
+}
+
+.sickPeople {
+    content: "\2624";
+    font-size: 100px;
+    color: orangered;
+}
+
+.healed {
+    content: "\263B";
+    font-size: 100px;
+    color: orangered;
+}
+
+death:hover {
+    content: "\271D";
+    color: aquamarine;
+}
+
+article h1 {
+    width: 100%;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: orangered;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 40px 0 10px;
 }
 
 h2 {
-    font-size: 2.5rem;
-    letter-spacing: -5px;
-    margin-bottom: 10px;
+    width: 100%;
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    font-family: 'helvetica', cursive;
+    text-align: center;
 }
+
+span p:first-child {
+    color: black;
+    font-family: 'adobe-handwriting-tiffany', 'sans-serif';
+    font-weight: 400;
+    background: none;
+    font-size: 24px;
+    margin-top: -10px;
+
+}
+
+span p {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: black;
+    background-color: whitesmoke;
+    margin-top: -35px;
+}
+
 
 /* FOOTER STYLING */
 
@@ -81,5 +168,5 @@ footer {
     font-size: 0.8em;
     padding: 30px;
     color: white;
-    margin-top: 100px;
+    margin-top: 120px;
 }

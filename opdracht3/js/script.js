@@ -2,80 +2,122 @@
 /*eslint-env browser*/
 /*eslint 'no-console':0*/
 
-//let is ongeveer hetzelfde als var (variabele)
-// link naar het json file wat je wilt gebruiken
-var requestURL = 'https://koopreynders.github.io/frontendvoordesigners/opdracht3/json/movies.json';
+//--------  LOADER ---------//
+//loader via bron: https://www.youtube.com/watch?v=b9zyKCsUJfY
+var loader;
 
-//Nieuwe functie request die XMLHHttpRequest oproept. Dit heb je altijd nodig voor het aanroepen van een json
+function loadNow(opacity) {
+    if (opacity <= 0) {
+        displayContent();
+    } else {
+        loader.style.opacity = opacity;
+        window.setTimeout(function () {
+            loadNow(opacity - 0.05)
+        }, 120);
+    }
+}
+
+function displayContent() {
+    loader.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loader = document.getElementById("loader");
+    loadNow(3);
+});
+
+//--------  GEGEVENS AANVRAGEN ---------//
+var data = 0;
+
 var request = new XMLHttpRequest();
+request.withCredentials = true;
 
-//Open het json file die je aan de let URL hebt gelinkt. 
-request.open('GET', requestURL);
+//Opent het json file + link naar de URL van de API die ik wil gebruiken 
+request.open("GET", "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php");
+request.responseType = 'json'; //vertelt wat voor soort file het is: json
+request.setRequestHeader("x-rapidapi-key", "800cfaec57mshb3d2fa49ac20cf9p1f6b51jsn3fcd61f320c0"); //sleutelcode die nodig is om de api te gebruiken 
+request.send(data); //verzoek verzenden
 
-//vertel wat voor soort file het is. In dit geval json
-request.responseType = 'json';
+//--------  VARIABELEN ---------//
+var i;
+var countryName;
+var totalCases;
+var deaths;
+var sick;
+var recovered;
 
-//verzoek verzenden
-request.send();
+//--------  VARIABELEN SELECTEREN UIT HTML---------//
 
-//functie aanmaken voor het laden van het json bestand
+var countryList = document.querySelector('#countryList'); //variabele die id countryList uit html selecteert
+
+var selectCountry = document.querySelector('.selected'); //variabele die class selected uit html selecteert
+
+var countryInfo = document.querySelector('article'); //variabele die article uit html selecteert
+
+var deathPeople = document.querySelector('.death');
+var sickPeople = document.querySelector('.sickPeople');
+var recoveredPeople = document.querySelector('.healed');
+
+makeContent(); // functie makeContent uitvoeren die elementen aan html toevoegd 
+
+//--------  GEGEVENS AANMAKEN FORMULIER ---------//
 request.onload = function () {
-//    var allMovies = request.response;
-    console.log(request.response);
-    console.log(request.response[4].release_date);
+    console.log(request.response.countries_stat);
 
-    Movie(request.response);
-//      showMovies(allMovies);
+    var getData = request.response.countries_stat; // gewenste data gegevens ophalen
+
+    //hulp van Vincent
+    for (i = 0; i < getData.length; i++) {
+        console.log('country ', getData[i]);
+        var option = document.createElement('option'); //option element aanmaken 
+        option.innerHTML = getData[i].country_name; //data landnamen ophalen 
+        //innerHTML takes the existing DOM content of the parent node and replaces it 
+        countryList.appendChild(option); //toevoegen van alle landnamen aan select in html
+    }
+};
+
+//--------  ELEMENTEN TOEVOEGEN AAN HTML ---------//
+function makeContent() {
+    countryName = document.createElement('h1'); // waarde aan variabele geven
+    totalCases = document.createElement('h2');
+    deaths = document.createElement('p');
+    sick = document.createElement('p');
+    recovered = document.createElement('p');
+
+    countryInfo.appendChild(countryName); //informatie uit json toevoegen aan het section in html
+    countryInfo.appendChild(totalCases);
+    deathPeople.appendChild(deaths); //informatie uit json toevoegen aan class in html 
+    sickPeople.appendChild(sick);
+    recoveredPeople.appendChild(recovered);
 }
 
-//functie voor toevoegen van een header aan het json object 
-function Movie(allMovies) {
-    var myH1 = document.createElement('h1'); // h1 element aanmaken
-    myH1.textContent = allMovies[4].title; //invulling van h1 element met link uit json file
-    header.appendChild(myH1); //toevoegen van h1 aan header uit html 
+//-------- CHANGE EVENT ---------//
 
-    var poster = document.createElement('img');
-    poster.src = allMovies[4].cover;
-    header.appendChild(poster);
-}
+//change event uitvoeren bij het selecteren van een country in de form
+selectCountry.addEventListener('change', function (event) {
+    console.log(event);
 
-// console.log(jsonObj['title']);
+    var getData = request.response.countries_stat; // gewenste data gegevens ophalen
 
-//  const myPara = document.createElement('p');
-//  myPara.textContent = 'plot' + jsonObj['release_date'] + ' // Formed: ' + jsonObj['formed'];
-//  header.appendChild(myPara);
-//}
-//
-//function showHeroes(jsonObj) {
-//  const heroes = jsonObj['members']; //variabele voor 
-//      
-//  for (let i = 0; i < heroes.length; i++) {
-//    const myArticle = document.createElement('article'); //element article toevoegen
-//    const myH2 = document.createElement('h2'); //element h2 toevoegen
-//    const myPara1 = document.createElement('p'); // element p toevoegen
-//    const myPara2 = document.createElement('p');
-//    const myPara3 = document.createElement('p');
-//    const myList = document.createElement('ul'); //element unorderd list toevoegen
-//
-//    myH2.textContent = heroes[i].name; 
-//    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity; //linken van content uit json file aan p1
-//    myPara2.textContent = 'Age: ' + heroes[i].age; //linken van content uit json file aan p2 
-//    myPara3.textContent = 'Superpowers:'; //linken van content uit json file aan p3 
-//        
-//    const superPowers = heroes[i].powers;
-//    for (let j = 0; j < superPowers.length; j++) {
-//      const listItem = document.createElement('li');
-//      listItem.textContent = superPowers[j];
-//      myList.appendChild(listItem);
-//    }
-//
-//    myArticle.appendChild(myH2); //toevoegen van de h2 aan het article
-//    myArticle.appendChild(myPara1); //toevoegen van p element aan article
-//    myArticle.appendChild(myPara2);
-//    myArticle.appendChild(myPara3);
-//    myArticle.appendChild(myList); //toevoegen van list aan article 
-//
-//    section.appendChild(myArticle); //toevoegen van het article aan de section
-//  }
-//}
-//*/
+    //hulp van Vincent
+    //forEach = excute a function on each element in the array
+    getData.forEach(function (country) {
+        if (country.country_name === selectCountry.value) {
+            console.log(country);
+
+            countryName.innerHTML = [country.country_name]; //aangeven waar de informatie over landnamen te vinden is in json file 
+            totalCases.textContent = 'cases: ' + [country.cases];
+            deaths.textContent = [country.deaths];
+            sick.textContent = [country.active_cases];
+            recovered.textContent = [country.total_recovered];
+        }
+    }, true);
+});
+
+
+
+//poging tot het toevoegen van een library voor het optellen van statistieken, dit is niet gelukt. bron: https://www.youtube.com/watch?v=pjacOlT7a_k
+//$('#countryList').click(function () {
+//      var c = new CountUp("totalCases", country.cases);
+//    c.start();
+//});
